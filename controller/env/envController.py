@@ -12,18 +12,21 @@ from resource.ui.env import Ui_Frame as DEV_Frame
 class Environment(Controller):
     def __init__(self, UI: Windows.Window):
         super().__init__(UI)
-        self.component: DEV_Frame = None
+        self.component: DEV_Frame = self.component if self.component else None
+
 
     def bind(self):
         self.component = self.ui.dev_frame
         # 绑定选择nginx目录
-        self.component.widget.clicked.connect(self.onDownloadFolderCardClicked)
+        self.component.nginxSelect.clicked.connect(lambda : self.__onDownloadFolderCardClicked())
 
-    def onDownloadFolderCardClicked(self):
+
+    def __onDownloadFolderCardClicked(self):
         """ download folder card clicked slot """
         folder = QFileDialog.getExistingDirectory(
-            self.component.widget, "选择文件夹", "./")
-        if not folder or ConfigItem(
-                "Folders", "Download", "app/download", FolderValidator()).value == folder:
+            self.component.nginxSelect, "选择文件夹", "./")
+        if not folder or self.config.fconfig.get(self.config.fconfig.NginxPathFolder) == folder:
             return
-        self.component.widget.setContent(folder)
+
+        self.config.fconfig.set(self.config.fconfig.NginxPathFolder, folder)
+        self.component.nginxSelect.setContent(folder)

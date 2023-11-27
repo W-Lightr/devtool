@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-            
 # @Author : Lightr
 # @Time : 2023/11/2 9:40
-from PySide6.QtGui import QIcon
 
 from config.Log.MyLogger import MyLogger
 from service.core.ThreadUtils import ThreadUtils
+from qfluentwidgets import qconfig, QConfig, ConfigItem, FolderListValidator, Theme, FolderValidator
 
 
 class Config:
@@ -28,3 +28,19 @@ class Config:
         self.glog: MyLogger = None
         # 线程对象
         self.thread: ThreadUtils = None
+        # musicFolders = ConfigItem(
+        #     "Folders", "LocalMusic", [], FolderListValidator())
+        self.fconfig = FConfig()
+        qconfig.load('app/config/config.json', self.fconfig)
+
+
+class FConfig(QConfig):
+    # dev工具的配置
+    musicFolders = ConfigItem(
+        "devSwitch", "LocalMusic", [], FolderListValidator())
+
+    NginxPathFolder = ConfigItem(
+        "devSwitch", "NginxPath", "app/download", FolderValidator())
+
+    RpcConfig = ConfigItem(
+        "devSwitch", "RpcConfig", "px.xml;ceshi.xml")
