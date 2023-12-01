@@ -10,9 +10,9 @@ from qfluentwidgets import (NavigationInterface, NavigationItemPosition, Navigat
 from qfluentwidgets import FluentIcon as FIF
 from qframelesswindow import FramelessWindow, StandardTitleBar
 
-from resource.ui.log import Ui_Frame as RZ_Frame
-from resource.ui.test import Ui_Frame as TEST_Frame
-from resource.ui.env import Ui_Frame as DEV_Frame
+from res.ui.log import Ui_Frame as RZ_Frame
+from res.ui.test import Ui_Frame as TEST_Frame
+from res.ui.env import Ui_Frame as DEV_Frame
 
 
 class Widget(QFrame):
@@ -54,10 +54,10 @@ class Window(FramelessWindow):
         self.dev_frame = DEV_Frame()
         self.dev_frame.setupUi(self.devtoolInterface)
         # test组件
-        self.testInterface = QFrame(self)
-        self.testInterface.setObjectName("testInterface")
-        self.test_frame = TEST_Frame()
-        self.test_frame.setupUi(self.testInterface)
+        # self.testInterface = QFrame(self)
+        # self.testInterface.setObjectName("testInterface")
+        # self.test_frame = TEST_Frame()
+        # self.test_frame.setupUi(self.testInterface)
 
         # self.searchInterface = Widget('Search Interface', self)
         # self.musicInterface = Widget('Music Interface', self)
@@ -89,7 +89,7 @@ class Window(FramelessWindow):
         # self.navigationInterface.setAcrylicEnabled(True)
         # 添加侧边栏
         self.addSubInterface(self.logInterface, FIF.DOCUMENT, '日志', NavigationItemPosition.BOTTOM)
-        self.addSubInterface(self.testInterface, FIF.HOME, '测试')
+        # self.addSubInterface(self.testInterface, FIF.HOME, '测试')
         self.addSubInterface(self.devtoolInterface, FIF.DEVELOPER_TOOLS, '开发')
         # self.addSubInterface(self.musicInterface, FIF.MUSIC, 'Music library')
         # self.navigationInterface.addSeparator()
@@ -114,8 +114,8 @@ class Window(FramelessWindow):
 
     def initWindow(self):
         self.resize(900, 700)
-        self.setWindowIcon(QIcon('resource/logo.png'))
-        self.setWindowTitle('我的程序')
+        # self.setWindowIcon(QIcon('res/logo.png'))
+        self.setWindowTitle('Lightr的小工具')
         self.titleBar.setAttribute(Qt.WA_StyledBackground)
 
         desktop = QApplication.screens()[0].availableGeometry()
@@ -138,9 +138,10 @@ class Window(FramelessWindow):
         )
 
     def setQss(self):
-        color = 'dark' if isDarkTheme() else 'light'
-        with open(f'resource/{color}/demo.qss', encoding='utf-8') as f:
-            self.setStyleSheet(f.read())
+        # color = 'dark' if isDarkTheme() else 'light'
+        # with open(f'res/{color}/demo.qss', encoding='utf-8') as f:
+        #     self.setStyleSheet(f.read())
+        pass
 
     def switchTo(self, widget):
         self.stackWidget.setCurrentWidget(widget)

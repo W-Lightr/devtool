@@ -6,6 +6,7 @@ from abc import abstractmethod
 
 import Windows
 from config.Config import Config
+from utils.GlobalTools import GlobalTools
 
 
 class Controller:
@@ -21,12 +22,21 @@ class Controller:
         self.config = Config()
         self.log = self.config.glog
         self.thread = self.config.thread
+        self.utils = self.config.utils
         self.bind()
 
     @abstractmethod
     def bind(self):
         """
         用于绑定控件的
+        :return:
+        """
+        pass
+
+    @abstractmethod
+    def init(self):
+        """
+        用于其他初始化
         :return:
         """
         pass

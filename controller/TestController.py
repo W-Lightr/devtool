@@ -11,6 +11,7 @@ class Test(Controller):
         self.component = None
 
     def bind(self):
-        self.component = self.ui.test_frame
-        self.log.info("Binding Controller")
-        self.component.PrimaryPushButton.clicked.connect(lambda: self.log.info("Hello World"))
+        pass
+        # self.component = self.ui.test_frame
+        # self.log.info("Binding Controller")
+        # self.component.PrimaryPushButton.clicked.connect(lambda: self.log.info("Hello World"))

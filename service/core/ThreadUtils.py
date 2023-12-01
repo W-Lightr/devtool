@@ -16,4 +16,10 @@ class ThreadUtils:
 
     # 创建线程池
     def __init__(self):
+        # 单例似乎失效了，用这个防止init被执行
+        if not hasattr(self, 'initialized'):
+            self.initialized = True
+            print("config initialized")
+        else:
+            return
         self.Threadset = ThreadPoolExecutor(max_workers=int(multiprocessing.cpu_count()/2))

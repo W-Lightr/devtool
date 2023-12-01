@@ -6,6 +6,8 @@ from config.Log.MyLogger import MyLogger
 from service.core.ThreadUtils import ThreadUtils
 from qfluentwidgets import qconfig, QConfig, ConfigItem, FolderListValidator, Theme, FolderValidator
 
+from utils.GlobalTools import GlobalTools
+
 
 class Config:
     _instance = None
@@ -28,6 +30,8 @@ class Config:
         self.glog: MyLogger = None
         # 线程对象
         self.thread: ThreadUtils = None
+        # 工具类
+        self.utils: GlobalTools = None
         # musicFolders = ConfigItem(
         #     "Folders", "LocalMusic", [], FolderListValidator())
         self.fconfig = FConfig()
@@ -43,4 +47,7 @@ class FConfig(QConfig):
         "devSwitch", "NginxPath", "app/download", FolderValidator())
 
     RpcConfig = ConfigItem(
-        "devSwitch", "RpcConfig", "px.xml;ceshi.xml")
+        "devSwitch", "RpcConfig", "C:/")
+
+    HostConfig = ConfigItem(
+        "devSwitch", "HostConfig", "xsaj.mesh.gat.gz;fxyj.mesh.gat.gz")
