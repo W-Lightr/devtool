@@ -114,7 +114,7 @@ class Window(FramelessWindow):
 
     def initWindow(self):
         self.resize(900, 700)
-        # self.setWindowIcon(QIcon('res/logo.png'))
+        self.setWindowIcon(QIcon(os.path.join(os.getcwd(), 'logo.png')))
         self.setWindowTitle('Lightr的小工具')
         self.titleBar.setAttribute(Qt.WA_StyledBackground)
 
