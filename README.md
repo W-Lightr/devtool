@@ -20,6 +20,16 @@ PySide6-Fluent版
 pip install "PySide6-Fluent-Widgets[full]" -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
+兼容WIN7和老版WIN10使用下面安装命令
+
+```bash
+pip install PySide6==6.1.3  -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install PySide6-Fluent-Widgets -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install psutil -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+
+
 ## 打包
 
 使用auto-py-to-exe来打包项目

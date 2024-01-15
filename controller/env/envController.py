@@ -10,6 +10,7 @@ from service.core.Controller import Controller
 from res.ui.env import Ui_Frame as DEV_Frame
 
 from service.envService import envService
+from service.mavenService import mavenService
 
 
 class Environment(Controller):
@@ -18,18 +19,21 @@ class Environment(Controller):
         self.menu = None
         self.component: DEV_Frame = self.component if self.component else None
         self.service = envService(self.ui, self.config)
+        self.mavenService = mavenService(self.ui, self.config)
         self.init()
         self.otherUIInit()
 
     def init(self):
         # 初始化数据
-        # RPC
         self.service.initComponentData()
+        self.mavenService.initComponentData()
 
     def bind(self):
         self.component = self.ui.dev_frame
         # 绑定选择nginx目录
         self.component.nginxSelect.clicked.connect(lambda: self.__onDownloadFolderCardClicked())
+        # 绑定选择maven目录
+        self.component.mavenpath.clicked.connect(lambda: self.__onMavenFolderCardClicked())
         self.component.nginxToolBtn.clicked.connect(lambda: self.service.nginxStart())
         self.component.hostjiazaiBtn.clicked.connect(
             lambda: self.service.uncomment_host(self.component.HjComboBox.text().split("-")[1],
@@ -42,6 +46,18 @@ class Environment(Controller):
         self.component.nginxjiazaiBtn.clicked.connect(lambda: self.service.replace_file_content(
             f"{self.config.fconfig.get(self.config.fconfig.NginxPathFolder)}/conf/{self.component.MkComboBox.text()}",
             f"{self.config.fconfig.get(self.config.fconfig.NginxPathFolder)}/conf/nginx.conf"))
+        # maven 存储账号密码URL
+        self.component.mavenycurledit.editingFinished.connect(
+            lambda: self.mavenService.writeRemoterUrlToFile(self.component.mavenycurledit.text()))
+        self.component.mavenzhedit.editingFinished.connect(
+            lambda: self.mavenService.writeUserToFile(self.component.mavenzhedit.text()))
+        self.component.mavenmmedit.editingFinished.connect(
+            lambda: self.mavenService.writePasswordToFile(self.component.mavenmmedit.text()))
+        self.component.updatetoremoteBtn.clicked.connect(lambda: self.mavenService.upload_files_to_repo(
+            self.component.mavenycurledit.text(),
+            self.component.mavenzhedit.text(),
+            self.component.mavenmmedit.text()))
+        self.component.clearZXBtn.clicked.connect(lambda: self.mavenService.clearZX())
 
     def otherUIInit(self):
         """
@@ -64,3 +80,12 @@ class Environment(Controller):
         # 保存内容到配置文件
         self.config.fconfig.set(self.config.fconfig.NginxPathFolder, folder)
         self.component.nginxSelect.setContent(folder)
+
+    def __onMavenFolderCardClicked(self):
+        folder = QFileDialog.getExistingDirectory(
+            self.component.mavenpath, "选择文件夹", "./")
+        if not folder or self.config.fconfig.get(self.config.fconfig.MavenPathFolder) == folder:
+            return
+        # 保存内容到配置文件
+        self.config.fconfig.set(self.config.fconfig.MavenPathFolder, folder)
+        self.component.mavenpath.setContent(folder)

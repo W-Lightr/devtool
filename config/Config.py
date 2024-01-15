@@ -46,8 +46,19 @@ class FConfig(QConfig):
     NginxPathFolder = ConfigItem(
         "devSwitch", "NginxPath", "app/download", FolderValidator())
 
+    MavenPathFolder = ConfigItem(
+        "devSwitch", "MavenPath", "repo", FolderValidator())
+
     RpcConfig = ConfigItem(
         "devSwitch", "RpcConfig", "C:/")
 
     HostConfig = ConfigItem(
         "devSwitch", "HostConfig", "xsaj.mesh.gat.gz;fxyj.mesh.gat.gz")
+
+    MavenUser = ConfigItem(
+        "devSwitch", "MavenUser", "root")
+
+    MavenPassword = ConfigItem(
+        "devSwitch", "MavenPassword", "root")
+    MavenRemoteUrl = ConfigItem(
+        "devSwitch", "MavenRemoteUrl", "http://")

@@ -48,7 +48,7 @@ class GlobalTools:
         return file_names
 
     def showBarSuccessful(self, title, message):
-        self.log.info(f"{title} {message}")
+        self.log.info(f"{title}:{message}")
         InfoBar.success(
             title=f'{title}',
             content=f"{message}",
@@ -60,7 +60,7 @@ class GlobalTools:
         )
 
     def showBarFailure(self, title, message):
-        self.log.error(f"{title} {message}")
+        self.log.error(f"{title}: {message}")
         InfoBar.error(
             title=f'{title}',
             content=f"{message}",

@@ -18,9 +18,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QSizePolicy,
     QSpacerItem, QVBoxLayout, QWidget)
 
-from qfluentwidgets import (BodyLabel, CardWidget, EditableComboBox, LineEdit,
-                            PrimaryPushSettingCard, PushButton, StrongBodyLabel, SubtitleLabel,
-                            SwitchButton, ToggleButton, PushSettingCard, FluentIcon)
+from qfluentwidgets import (BodyLabel, CaptionLabel, CardWidget, EditableComboBox,
+                            LineEdit, PrimaryPushSettingCard, PushButton, StrongBodyLabel,
+                            SubtitleLabel, SwitchButton, ToggleButton, FluentIcon, PushSettingCard)
 
 from config.Config import Config
 
@@ -91,8 +91,7 @@ class Ui_Frame(object):
                                            "Nginx目录",
                                            Config().fconfig.get(Config().fconfig.NginxPathFolder),
                                            self.CardWidget)
-        self.nginxSelect.setObjectName(u"nginxCard")
-        self.nginxSelect.setGeometry(QRect(20, 100, 621, 61))
+        self.nginxSelect.setObjectName(u"nginxSelect")
 
         self.verticalLayout_2.addWidget(self.nginxSelect)
 
@@ -177,6 +176,118 @@ class Ui_Frame(object):
 
         self.verticalLayout.addWidget(self.CardWidget_2)
 
+        self.SubtitleLabel_2 = SubtitleLabel(Frame)
+        self.SubtitleLabel_2.setObjectName(u"SubtitleLabel_2")
+
+        self.verticalLayout.addWidget(self.SubtitleLabel_2)
+
+        self.CardWidget_3 = CardWidget(Frame)
+        self.CardWidget_3.setObjectName(u"CardWidget_3")
+        self.verticalLayout_4 = QVBoxLayout(self.CardWidget_3)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.StrongBodyLabel_3 = StrongBodyLabel(self.CardWidget_3)
+        self.StrongBodyLabel_3.setObjectName(u"StrongBodyLabel_3")
+
+        self.verticalLayout_4.addWidget(self.StrongBodyLabel_3)
+
+        self.mavenpath = PushSettingCard('选择',
+                                         FluentIcon.BOOK_SHELF,
+                                         "本地Maven仓库路径",
+                                         Config().fconfig.get(Config().fconfig.MavenPathFolder),
+                                         self.CardWidget_3)
+        self.mavenpath.setObjectName(u"mavenpath")
+
+        self.verticalLayout_4.addWidget(self.mavenpath)
+
+        self.verticalLayout_5 = QVBoxLayout()
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.mavenycurltitle = BodyLabel(self.CardWidget_3)
+        self.mavenycurltitle.setObjectName(u"mavenycurltitle")
+
+        self.horizontalLayout_2.addWidget(self.mavenycurltitle)
+
+        self.mavenycurledit = LineEdit(self.CardWidget_3)
+        self.mavenycurledit.setObjectName(u"mavenycurledit")
+
+        self.horizontalLayout_2.addWidget(self.mavenycurledit)
+
+        self.horizontalSpacer = QSpacerItem(200, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer)
+
+
+        self.verticalLayout_5.addLayout(self.horizontalLayout_2)
+
+        self.horizontalLayout_5 = QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.mavenzhtitle = BodyLabel(self.CardWidget_3)
+        self.mavenzhtitle.setObjectName(u"mavenzhtitle")
+
+        self.horizontalLayout_5.addWidget(self.mavenzhtitle)
+
+        self.mavenzhedit = LineEdit(self.CardWidget_3)
+        self.mavenzhedit.setObjectName(u"mavenzhedit")
+
+        self.horizontalLayout_5.addWidget(self.mavenzhedit)
+
+        self.mavenmmtitle = BodyLabel(self.CardWidget_3)
+        self.mavenmmtitle.setObjectName(u"mavenmmtitle")
+
+        self.horizontalLayout_5.addWidget(self.mavenmmtitle)
+
+        self.mavenmmedit = LineEdit(self.CardWidget_3)
+        self.mavenmmedit.setObjectName(u"mavenmmedit")
+
+        self.horizontalLayout_5.addWidget(self.mavenmmedit)
+
+        self.horizontalSpacer_2 = QSpacerItem(200, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_2)
+
+
+        self.verticalLayout_5.addLayout(self.horizontalLayout_5)
+
+
+        self.verticalLayout_4.addLayout(self.verticalLayout_5)
+
+        self.verticalSpacer_3 = QSpacerItem(4, 4, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_4.addItem(self.verticalSpacer_3)
+
+        self.StrongBodyLabel_4 = StrongBodyLabel(self.CardWidget_3)
+        self.StrongBodyLabel_4.setObjectName(u"StrongBodyLabel_4")
+
+        self.verticalLayout_4.addWidget(self.StrongBodyLabel_4)
+
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.updatetoremoteBtn = PushButton(self.CardWidget_3)
+        self.updatetoremoteBtn.setObjectName(u"updatetoremoteBtn")
+
+        self.horizontalLayout_6.addWidget(self.updatetoremoteBtn)
+
+        self.clearZXBtn = PushButton(self.CardWidget_3)
+        self.clearZXBtn.setObjectName(u"clearZXBtn")
+
+        self.horizontalLayout_6.addWidget(self.clearZXBtn)
+
+        self.CaptionLabel = CaptionLabel(self.CardWidget_3)
+        self.CaptionLabel.setObjectName(u"CaptionLabel")
+
+        self.horizontalLayout_6.addWidget(self.CaptionLabel)
+
+        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_6)
+
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_6)
+
+
+        self.verticalLayout.addWidget(self.CardWidget_3)
+
         self.verticalSpacer = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout.addItem(self.verticalSpacer)
@@ -204,5 +315,14 @@ class Ui_Frame(object):
         self.nginxtitle.setText(QCoreApplication.translate("Frame", u"Nginx\u914d\u7f6e", None))
         self.nginxjiazaiBtn.setText(QCoreApplication.translate("Frame", u"\u52a0\u8f7dNginx\u914d\u7f6e", None))
         self.nginxToolBtn.setText(QCoreApplication.translate("Frame", u"\u542f\u52a8Nginx", None))
+        self.SubtitleLabel_2.setText(QCoreApplication.translate("Frame", u"Maven\u5de5\u5177", None))
+        self.StrongBodyLabel_3.setText(QCoreApplication.translate("Frame", u"\u914d\u7f6e", None))
+        self.mavenycurltitle.setText(QCoreApplication.translate("Frame", u"\u8fdc\u7a0b\u4ed3\u5e93\u5730\u5740\uff1a", None))
+        self.mavenzhtitle.setText(QCoreApplication.translate("Frame", u"\u8d26\u53f7\uff1a", None))
+        self.mavenmmtitle.setText(QCoreApplication.translate("Frame", u"\u5bc6\u7801\uff1a", None))
+        self.StrongBodyLabel_4.setText(QCoreApplication.translate("Frame", u"\u64cd\u4f5c", None))
+        self.updatetoremoteBtn.setText(QCoreApplication.translate("Frame", u"\u4e0a\u4f20\u672c\u5730\u5305\u5230\u8fdc\u7a0b", None))
+        self.clearZXBtn.setText(QCoreApplication.translate("Frame", u"\u6e05\u9664\u6742\u9879", None))
+        self.CaptionLabel.setText(QCoreApplication.translate("Frame", u"\u6ce8\u610f\uff1a\u6e05\u9664.repositories\u3001lastupdated\u6587\u4ef6", None))
     # retranslateUi
 
