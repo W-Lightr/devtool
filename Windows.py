@@ -28,7 +28,7 @@ class Widget(QFrame):
 
 
 class Window(FramelessWindow):
-
+    _VERSION = '1.0.1'
     def __init__(self):
         super().__init__()
         self.setTitleBar(StandardTitleBar(self))
@@ -117,7 +117,7 @@ class Window(FramelessWindow):
         self.resize(900, 700)
         self.setWindowIcon(QIcon(self.resource_path('log.png')))
         print(self.resource_path('log.png'))
-        self.setWindowTitle('Lightr的小工具')
+        self.setWindowTitle(f'Lightr的小工具  V{self._VERSION}')
         self.titleBar.setAttribute(Qt.WA_StyledBackground)
 
         desktop = QApplication.screens()[0].availableGeometry()
