@@ -3,6 +3,7 @@
 # @Time : 2023/11/2 15:35
 import glob
 import os
+import sys
 
 from PySide6.QtCore import Qt
 from qfluentwidgets import InfoBar, InfoBarPosition
@@ -25,6 +26,7 @@ class GlobalTools:
         self.ui = ui
         self.config = config
         self.log = config.glog
+
     def read_files_in_directory(self, directory_path, file_extension=".json"):
         """
         读取指定目录中的文件并返回文件名列表
@@ -71,7 +73,7 @@ class GlobalTools:
             parent=self.ui
         )
 
-    def read_hosts_file(self,file_path):
+    def read_hosts_file(self, file_path):
         """
         读取文件
         :param file_path:
@@ -86,3 +88,14 @@ class GlobalTools:
             self.log.info(f"File not found: {file_path}")
         except Exception as e:
             self.log.info(f"Error reading hosts file: {e}")
+
+    def resource_path(self, relative_path):
+        """ 获取资源的绝对路径 for PyInstaller """
+        try:
+            # PyInstaller creates a temp folder and stores path in _MEIPASS
+            base_path = sys._MEIPASS
+        except Exception:
+            # If not running in PyInstaller, assume the resources are in the same folder as the script
+            base_path = os.path.abspath(".")
+
+        return os.path.join(base_path, relative_path)

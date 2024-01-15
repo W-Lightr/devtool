@@ -13,6 +13,7 @@ from qframelesswindow import FramelessWindow, StandardTitleBar
 from res.ui.log import Ui_Frame as RZ_Frame
 from res.ui.test import Ui_Frame as TEST_Frame
 from res.ui.env import Ui_Frame as DEV_Frame
+from utils.GlobalTools import GlobalTools
 
 
 class Widget(QFrame):
@@ -114,7 +115,8 @@ class Window(FramelessWindow):
 
     def initWindow(self):
         self.resize(900, 700)
-        self.setWindowIcon(QIcon(os.path.join(os.getcwd(), 'logo.png')))
+        self.setWindowIcon(QIcon(self.resource_path('log.png')))
+        print(self.resource_path('log.png'))
         self.setWindowTitle('Lightr的小工具')
         self.titleBar.setAttribute(Qt.WA_StyledBackground)
 
@@ -153,7 +155,16 @@ class Window(FramelessWindow):
         # !IMPORTANT: This line of code needs to be uncommented if the return button is enabled
         # qrouter.push(self.stackWidget, widget.objectName())
 
+    def resource_path(self, relative_path):
+        """ 获取资源的绝对路径 for PyInstaller """
+        try:
+            # PyInstaller creates a temp folder and stores path in _MEIPASS
+            base_path = sys._MEIPASS
+        except Exception:
+            # If not running in PyInstaller, assume the resources are in the same folder as the script
+            base_path = os.path.abspath(".")
 
+        return os.path.join(base_path, relative_path)
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     w = Window()

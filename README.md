@@ -48,6 +48,12 @@ pip install auto-py-to-exe -i https://pypi.tuna.tsinghua.edu.cn/simple
 auto-py-to-exe
 ```
 
+v1.0.1版本
+
+```bash
+pyinstaller --noconfirm --onedir --windowed --icon "E:/Code/Python/devtools/res/favicon.ico" --name "Lightr的小工具" --add-data "E:/Code/Python/devtools/res/log.png;."  "E:/Code/Python/devtools/Start.py"
+```
+
 
 
 ## 启动
