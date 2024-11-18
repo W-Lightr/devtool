@@ -4,7 +4,7 @@
 
 
 
-![image-20241115142607851](http://mark.lightr.cn/mark/image-20241115142607851.png?imageMogr2/auto-orient/blur/1x0/quality/80%7Cwatermark/2/text/QOS5mOmjjuW9kuWOuw==/font/5a6L5L2T/fontsize/260/fill/IzAwMDAwMA==/dissolve/58/gravity/SouthEast/dx/10/dy/10)
+![image-20241115142607851](https://s2.loli.net/2024/11/18/8XJl7Y5OdUNZQFm.png)
 
 ## 安装依赖
 
